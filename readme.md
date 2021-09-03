@@ -34,7 +34,14 @@ possible.
 
 Using GitHub Pages, you can easily publish your portfolio.
 
-If you set the repository name to `{your username}.github.io` and change the `Setting -> Pages ->Source` of the repository to `gh-pages`, the portfolio will be published at `{your username}.github.io`.
+#### If you set the repository name to `{your username}.github.io`
+- change the `Setting -> Pages -> Source` of the repository to `gh-pages`.
+- the portfolio will be published at `http(s)://{your username}.github.io`.
+
+#### If you set the repository name to something other than `{your username}.github.io`
+- add `assetPrefix: '/{your repository name}'` to `module.exports` in `. /next.config.js`.
+- change the `Setting -> Pages -> Source` of the repository to `gh-pages`.
+- the portfolio will be published at `http(s)://{your username}.github.io/{your repository name}`
 
 ![image](https://user-images.githubusercontent.com/85210804/131305954-20268754-1c1e-4e4e-879e-4ee0ff1dff85.png)
 
