@@ -6,7 +6,7 @@ const ENV_VARS = {
 };
 
 module.exports = {
-  // assetPrefix: ''
+  // assetPrefix: '',
   env                : ENV_VARS,
   publicRuntimeConfig: ENV_VARS,
   poweredByHeader    : false
