@@ -12,6 +12,7 @@ import SideCol                                                   from '@src/comp
 import MainCol                                                   from '@src/components/main-col/main-col';
 import {isSkillLogoConfigObj, SkillLogoConfigObj}                from '@src/types/skill-logo-obj.type';
 import Head                                                      from 'next/head';
+import {GetStaticPropsResult}                                    from 'next';
 
 type HomeProps =
   {user: UserObj, socialMediaConfig: SocialMediaConfigObj, repos: ReposObj, skills: SkillsObj, skillLogoConfig: SkillLogoConfigObj, history: string, others: string, titles: TitlesObj, sort_repos_by: string}
@@ -37,7 +38,7 @@ const Home = ({
 
 export default Home;
 
-export async function getStaticProps(): Promise<{props: HomeProps}> {
+export async function getStaticProps(): Promise<GetStaticPropsResult<HomeProps>> {
   let config = yaml.load(fs.readFileSync('./config/config.yml', 'utf-8')) as {[key: string]: any};
 
   // 値がnullなプロパティの値を、exclude_reposとexclude_skillsは空配列・それ以外は空オブジェクトに変換する
@@ -84,7 +85,8 @@ export async function getStaticProps(): Promise<{props: HomeProps}> {
       user, socialMediaConfig, repos, skills, skillLogoConfig, history, others,
       titles       : config.system.titles,
       sort_repos_by: config.system.sort_repos_by
-    }
+    },
+    revalidate: 3
   };
 }
 
